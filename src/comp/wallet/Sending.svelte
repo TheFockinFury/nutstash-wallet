@@ -29,6 +29,7 @@
 	import ScanNpub from '../elements/ScanNpub.svelte';
 	import { page } from '$app/stores';
 
+
 	export let active;
 
 	let mint: Mint = $mints[0];
@@ -195,9 +196,6 @@
 	<LoadingCenter />
 {:else if encodedToken}
 	<div class="grid grid-cols-1 gap-2">
-		<!-- <div>
-					<QRCodeImage text={encodedToken} scale={3} displayType="canvas" />
-				</div> -->
 		<div class="flex flex-col gap-2">
 			<div class="text-center">
 				<p class="text-xl font-bold text-success">Tokens are ready to be sent!</p>
@@ -267,6 +265,9 @@
 				</div>
 			{/if}
 		</div>
+	</div>
+	<div>
+		<QRCodeImage text={encodedToken} scale={3} displayType="canvas"  />
 	</div>
 	<div class="flex gap-2">
 		<button class="btn {hasBeenCopied ? '' : 'btn-disabled'}" on:click={resetState}>ok</button>
