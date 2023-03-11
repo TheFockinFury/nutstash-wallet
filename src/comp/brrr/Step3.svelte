@@ -65,11 +65,9 @@
 </svelte:head>
 
 {#if isFinished}
-	<div>
+	<div class="flex flex-col gap-2 w-60">
 		{#each tokens as token}
-			<p>
-				{token}
-			</p>
+			<Note denomination={selectedDenomination} mintUrl={selectedMint.mintURL} token={token}></Note>
 		{/each}
 	</div>
 {:else if isLoading}
