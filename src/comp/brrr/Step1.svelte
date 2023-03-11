@@ -1,14 +1,12 @@
 <script lang="ts">
-    import { getAmountForTokenSet, getTokensForMint } from '../../comp/util/walletUtils';
+	import { getAmountForTokenSet, getTokensForMint } from '../../comp/util/walletUtils';
 	import { mints } from '../../stores/mints';
 	import { token } from '../../stores/tokens';
-    
+
 	export let selectedMint = $mints[0];
-    
 </script>
-<p class="text-center font-bold text-lg">
-    select a mint to print money from
-</p>
+
+<p class="text-center font-bold text-lg">select a mint to print money from</p>
 {#each $mints.filter((m) => m.isAdded) as mint}
 	<div class="max-w-xs lg:max-w-lg flex">
 		<label class="label cursor-pointer">

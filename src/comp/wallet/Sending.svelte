@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { CashuMint, CashuWallet, getDecodedProofs, getEncodedProofs } from '@gandlaf21/cashu-ts';
+	import { CashuMint, CashuWallet, getDecodedProofs, getEncodedProofs } from '@cashu/cashu-ts';
 	import { toast } from '../../stores/toasts';
 	import type { Mint } from '../../model/mint';
 	import { mints } from '../../stores/mints';
@@ -28,7 +28,8 @@
 	import { pendingTokens } from '../../stores/pendingtokens';
 	import ScanNpub from '../elements/ScanNpub.svelte';
 	import { page } from '$app/stores';
-
+	import { QRCodeImage } from 'svelte-qrcode-image';
+	import Note from '../brrr/Note.svelte';
 
 	export let active;
 
@@ -266,9 +267,19 @@
 			{/if}
 		</div>
 	</div>
-	<div>
-		<QRCodeImage text={encodedToken} scale={3} displayType="canvas"  />
-	</div>
+	{#if encodedToken.length < 1000 && amountToSend <= 9999}
+		<div class="w-full text-center font-bold">
+			{#if sendAsLink}
+				<Note
+					denomination={amountToSend}
+					mintUrl={mint.mintURL}
+					token={$page.url.href + '#' + encodedToken}
+				/>
+			{:else}
+				<Note denomination={amountToSend} mintUrl={mint.mintURL} token={encodedToken} />
+			{/if}
+		</div>
+	{/if}
 	<div class="flex gap-2">
 		<button class="btn {hasBeenCopied ? '' : 'btn-disabled'}" on:click={resetState}>ok</button>
 		{#if $useNostr}

@@ -43,7 +43,8 @@
 		<div class="col-span-4 flex gap-1 items-center">
 			<BackupButton />
 			<p>
-				Tokens that have been sent or received after the backup was made won't be restored by the backup! make backups frequently
+				Tokens that have been sent or received after the backup was made won't be restored by the
+				backup! make backups frequently
 			</p>
 		</div>
 		<div class="col-span-1">

@@ -4,8 +4,8 @@
 	import { getAmountForTokenSet, getTokensForMint } from '../util/walletUtils';
 	export let selectedMint: Mint;
 
-    export let selectedDenomination = 1;
-    export let selectedNumberOfNotes = 1;
+	export let selectedDenomination = 1;
+	export let selectedNumberOfNotes = 1;
 
 	const availableAmount = getAmountForTokenSet(getTokensForMint(selectedMint, $token));
 
@@ -20,8 +20,6 @@
 	};
 
 	const denomintations = getDenominations();
-
-	
 </script>
 
 <div class="flex gap-2 flex-col ">
@@ -50,7 +48,7 @@
 	</div>
 	<div class="flex gap-2 items-center">
 		<p>number of notes:</p>
-		<input type="number" class="input input-primary" bind:value={selectedNumberOfNotes}/>
-        (min. 1 - max. {Math.floor(availableAmount/selectedDenomination)})
+		<input type="number" class="input input-primary" bind:value={selectedNumberOfNotes} />
+		(min. 1 - max. {Math.floor(availableAmount / selectedDenomination)})
 	</div>
 </div>
